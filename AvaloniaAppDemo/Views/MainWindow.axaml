@@ -1,0 +1,66 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:pages="clr-namespace:AvaloniaAppDemo.Views.Pages"
+        xmlns:settings="clr-namespace:AvaloniaAppDemo.Views.Pages.Settings"
+        xmlns:actions="clr-namespace:AvaloniaAppDemo.Views.Pages.Actions"
+        xmlns:views="clr-namespace:AvaloniaAppDemo.views"
+        mc:Ignorable="d" d:DesignWidth="1300" d:DesignHeight="800"
+        x:Class="AvaloniaAppDemo.Views.MainWindow"
+        x:DataType="views:MainWindowViewModel"
+        Title="AvaloniaAppDemo">
+
+    <Design.DataContext>
+        <views:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid Background="{DynamicResource PrimaryForegroundColor}"
+          ColumnDefinitions="Auto, *">
+        <Border Padding="4"
+                Background="{DynamicResource NormalGradient}">
+            <Grid RowDefinitions="*, Auto">
+                <StackPanel Spacing="10" Width="{Binding SideMenuWidth}">
+                    <Image Source="{SvgImage /Assets/Images/logo.svg}" IsVisible="{Binding ExpendSideMenu}"></Image>
+                    <Image Margin="3" Source="{SvgImage /Assets/Images/icon.svg}" Width="22" IsVisible="{Binding !ExpendSideMenu}"></Image>
+                    <IconButton HorizontalAlignment="Stretch"
+                                Icon="&#xe2c2;"
+                                Classes.isActive="{Binding HomePageIsActive}"
+                                CommandParameter="{x:Type pages:HomeViewModel}"
+                                Command="{Binding GoPage}">
+                        <Label Content="Home"></Label>
+                    </IconButton>
+                    <IconButton HorizontalAlignment="Stretch"
+                                Icon="&#xe572;"
+                                Classes.isActive="{Binding ActionsPageIsActive}"
+                                CommandParameter="{x:Type actions:ActionsViewModel}"
+                                Command="{Binding GoPage}">
+                        <Label Content="Actions"></Label>
+                    </IconButton>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Spacing="12">
+                    <Button Click="Button_OnClick">
+                        <Label Classes="icon" Content="{Binding SideMenuIcon}"></Label>
+                    </Button>
+                    <Button Click="Button_OnClick">
+                        <Label Classes="icon" Content="&#xea1c;"></Label>
+                    </Button>
+                    <Button
+                        Classes.isActive="{Binding SettingPageIsActive}"
+                        HorizontalAlignment="Left"
+                        CommandParameter="{x:Type settings:SettingsViewModel}"
+                        Command="{Binding GoPage}">
+                        <Label Classes="icon" Content="&#xE270;"></Label>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1">
+            <Border Background="Gray">
+                <ContentControl Content="{Binding CurrentPage}"></ContentControl>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

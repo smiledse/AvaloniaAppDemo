@@ -1,0 +1,84 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="AvaloniaAppDemo.App"
+             xmlns:local="clr-namespace:AvaloniaAppDemo"
+             RequestedThemeVariant="Default">
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="Styles/General.axaml"></StyleInclude>
+        <StyleInclude Source="Styles/Button.axaml"></StyleInclude>
+        <StyleInclude Source="Styles/ChomBoxStyle.axaml"></StyleInclude>
+        <StyleInclude Source="Styles/ListBox.axaml"></StyleInclude>
+    </Application.Styles>
+
+    <Application.DataTemplates>
+        <local:ViewLocator></local:ViewLocator>
+    </Application.DataTemplates>
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="Controls/IconButton.axaml" />
+                <ResourceInclude Source="Controls/Checkbox.axaml" />
+                <ResourceInclude Source="Controls/TabControl.axaml" />
+                <ResourceInclude Source="Controls/TabItem.axaml" />
+                <ResourceInclude Source="Controls/ListBoxItem.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+        <FontFamily x:Key="Phosphor">Assets/Fonts/Phosphor.ttf#Phosphor</FontFamily>
+
+        <Color x:Key="PrimaryBackgroundColor">#151E3C</Color>
+        <Color x:Key="PrimaryBackgroundColor1">#111214</Color>
+        <Color x:Key="PrimaryBackgroundColor2">#151E3E</Color>
+        <Color x:Key="PrimaryForegroundColor">#D3D3D3</Color>
+        <Color x:Key="PrimaryForegroundSubtleColor">#9292A2</Color>
+        
+        <Color x:Key="BrandColor">#481FA3</Color>
+        <Color x:Key="BrandSecondaryColor">#4E2D95</Color>
+        
+        <Color x:Key="WarningBackgroundColor">#FEF906</Color>
+        <Color x:Key="HoverDangerBackgroundColor">#EA0CF0</Color>
+        
+        <Color x:Key="PrimaryText">#303133</Color>
+        <Color x:Key="RegularText">#606266</Color>
+        <Color x:Key="SecondaryText">#909399</Color>
+        <Color x:Key="PlaceholderText">#A8ABB2</Color>
+        <Color x:Key="DisabledText">#C0C4CC</Color>
+        
+        <Color x:Key="BaseBorderColor">#32364E</Color>
+        <Color x:Key="BorderColor">#909399</Color>
+        
+        <x:Double x:Key="FirstFontSize">32</x:Double>
+        <x:Double x:Key="SecondaryFontSize">24</x:Double>
+        <x:Double x:Key="SubtleFontSize">12</x:Double>
+        <CornerRadius x:Key="CornerRadius">6</CornerRadius>
+        <x:Double x:Key="ButtonBorderThickness">4</x:Double>
+        
+        <Color x:Key="CardBackgroundColor">#181b2e</Color>
+        <Color x:Key="CardBorderColor">#232640</Color>
+        <Color x:Key="CardBorderSubtleColor">#2e3252</Color>
+        <Color x:Key="HoverBackgroundColor">#1e2238</Color>
+        <Color x:Key="TableHeaderBackgroundColor">#131625</Color>
+        <Color x:Key="DialogOverlayColor">#000000</Color>
+        
+        <LinearGradientBrush x:Key="NormalGradient" StartPoint="0%,0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#151E3C"></GradientStop>
+            <GradientStop Offset="1" Color="#9292A2"></GradientStop>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PrimaryGradient" StartPoint="0%,0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#00ffff"></GradientStop>
+            <GradientStop Offset="1" Color="#ff00f1"></GradientStop>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="WarningGradient" StartPoint="0%,0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#FEF906"></GradientStop>
+            <GradientStop Offset="1" Color="#F18F10"></GradientStop>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SuccessGradient" StartPoint="0%,0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#55CB18"></GradientStop>
+            <GradientStop Offset="1" Color="#2D8539"></GradientStop>
+        </LinearGradientBrush>
+    </Application.Resources>
+</Application>

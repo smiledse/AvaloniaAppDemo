@@ -1,0 +1,88 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:AvaloniaAppDemo.Views.Pages.Actions"
+             xmlns:vm="clr-namespace:AvaloniaAppDemo.Views.Pages.Actions.Partials"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
+             Background="{DynamicResource PrimaryBackgroundColor}"
+             Foreground="{DynamicResource PrimaryForegroundColor}"
+             x:DataType="local:ActionsViewModel"
+             x:Class="AvaloniaAppDemo.Views.Pages.Actions.Partials.ActionsPrintView">
+    
+    <Design.DataContext>
+        <local:ActionsViewModel></local:ActionsViewModel>
+    </Design.DataContext>
+    <Grid ColumnDefinitions="200, 20, *,20, *">
+        <Grid Grid.Column="0" RowDefinitions="Auto, *">
+            <StackPanel  Margin="0, 0, 0, 10">
+                <Label Classes="h2">Print Actions</Label>
+                <TextBlock Classes="info" TextWrapping="Wrap">
+                    Print actions can be used to  specific settings.
+                </TextBlock>
+            </StackPanel>
+            <ListBox Grid.Row="1" ItemsSource="{Binding PrintList}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="vm:ActionPrintViewModel">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label 
+                                VerticalAlignment="Center"
+                                Content="{Binding JobName}"></Label>
+                            <Button Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Classes="small"
+                                    IsVisible="{Binding $parent[ListBoxItem].IsSelected}">
+                                <Label Classes="icon icon-only" Content="&#xe4a6;" FontSize="11"></Label>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <Grid Column="2">
+            <StackPanel Spacing="15">
+                <StackPanel>
+                    <Label Classes="h2">General Settings</Label>
+                    <TextBlock Classes="info">Set the name properties the print job.</TextBlock>
+                </StackPanel>
+                <Grid ColumnDefinitions="80, 15, *">
+                    <Label>Job Name</Label>
+                    <TextBox Grid.Column="2"></TextBox>
+                </Grid>
+                <Grid ColumnDefinitions="80, 15, *">
+                    <Label>Job Name</Label>
+                    <TextBox Grid.Column="2" TextWrapping="Wrap" Height="90"></TextBox>
+                </Grid>
+                <Grid ColumnDefinitions="80, 15, *">
+                    <Label>Print</Label>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal">
+                        <CheckBox>Models</CheckBox>
+                        <CheckBox>Drawings</CheckBox>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid Column="4">
+            <StackPanel Spacing="15">
+                <StackPanel>
+                    <Label Classes="h2">Drawings</Label>
+                    <TextBlock Classes="info">Set the  properties that apply to drawings.</TextBlock>
+                </StackPanel>
+                <Grid ColumnDefinitions="100, 15, *">
+                    <Label>Print Range</Label>
+                    <TextBox Grid.Column="2"></TextBox>
+                </Grid>
+                <Grid ColumnDefinitions="100, 15, *">
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        Spacing="10" 
+                        Grid.ColumnSpan="2">
+                        <ToggleButton VerticalAlignment="Top"></ToggleButton>
+                        <Label VerticalAlignment="Top">Black List</Label>
+                    </StackPanel>
+                    <TextBox Grid.Column="2" TextWrapping="Wrap" Height="90"></TextBox>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

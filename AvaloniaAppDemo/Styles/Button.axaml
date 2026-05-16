@@ -1,0 +1,93 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="{DynamicResource PrimaryBackgroundColor}">
+            <StackPanel Spacing="20">
+                <Button>你好</Button>
+                <IconButton Icon="&#xE512;" Width="200" Content="测试"></IconButton>
+                <IconButton Classes="isActive" Icon="&#xE512;" Width="200" Content="测试"></IconButton>
+                <IconButton Classes="outline" Icon="&#xE512;" Width="200" Content="测试"></IconButton>
+                <IconButton Classes="subtle" Icon="&#xE512;" Width="200" Content="测试"></IconButton>
+                <IconButton Height="50" Classes="subtle" Icon="&#xE512;"  Content="测试"></IconButton>
+                <IconButton Height="50" Classes="primary" Icon="&#xE512;"  Content="测试"></IconButton>
+                <Button>
+                    <Label Classes="icon" Content="&#xE512;"></Label>
+                </Button>
+                <Button Classes="isActive">
+                    <Label Classes="icon" Content="&#xE512;"></Label>
+                </Button>
+                
+                <Button Classes="small">
+                    <Label Classes="icon icon-only" FontSize="12" Content="&#xE512;"></Label>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+     <Style Selector=":is(Button)">
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="CornerRadius" Value="{DynamicResource CornerRadius}"></Setter>
+        <Setter Property="Padding" Value="9,5.5,9.2,5.5"></Setter>
+        <Setter Property="FontWeight" Value="Black"></Setter>
+    </Style>
+    
+    <Style Selector=":is(Button)">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColor}"></Setter>
+        <Setter Property="Background" Value="#15172E"></Setter>
+    </Style>
+    
+    <Style Selector=":is(Button).isActive">
+        <Setter Property="Background" Value="{DynamicResource HoverBackgroundColor}"></Setter>
+    </Style>
+    
+    
+    <Style Selector=":is(Button).small">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColor}"></Setter>
+        <Setter Property="Background" Value="#15172E"></Setter>
+        <Setter Property="Padding" Value="5, 3"></Setter>
+        <Setter Property="FontSize" Value="9"></Setter>
+    </Style>
+    
+    <Style Selector=":is(Button).primary">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBackgroundColor}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource PrimaryGradient}"></Setter>
+    </Style>
+    <Style Selector=":is(Button).outline">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColor}"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryGradient}"></Setter>
+        <Setter Property="BorderThickness" Value="3"></Setter>
+    </Style>
+    <Style Selector=":is(Button).subtle">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBackgroundColor}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource WarningGradient}"></Setter>
+    </Style>
+    
+    <Style Selector=":is(Button) /template/ ContentPresenter">
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Foreground" Duration="0:0:0.3"></BrushTransition>
+                <BrushTransition Property="Background" Duration="0:0:0.3"></BrushTransition>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3"></TransformOperationsTransition>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector=":is(Button):pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColor}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource HoverBackgroundColor}"></Setter>
+    </Style>
+    <Style Selector=":is(Button).primary:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColor}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource HoverDangerBackgroundColor}"></Setter>
+    </Style>
+    <Style Selector=":is(Button).outline:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBackgroundColor}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryGradient}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource PrimaryGradient}"></Setter>
+    </Style>
+    
+    <Style Selector=":is(Button).subtle:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBackgroundColor}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource WarningBackgroundColor}"></Setter>
+    </Style>
+</Styles>

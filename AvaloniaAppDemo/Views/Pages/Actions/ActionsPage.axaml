@@ -1,0 +1,34 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:partial="clr-namespace:AvaloniaAppDemo.Views.Pages.Actions.Partials"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="600"
+             Foreground="{DynamicResource PrimaryForegroundColor}"
+             x:Class="AvaloniaAppDemo.Views.Pages.Actions.ActionsPage">
+    <Grid RowDefinitions="Auto, *" Background="{DynamicResource PrimaryBackgroundColor}">
+        <Grid Grid.Row="0">
+            <Image Source="{SvgImage /Assets/Images/background-actions.svg}" Height="150" Stretch="UniformToFill"></Image>
+            <StackPanel  Margin="0, 25, 0, 0"> 
+                <Label Classes="h1" HorizontalAlignment="Center">Actions</Label>
+                <Label Classes="sub1" HorizontalAlignment="Center">Create and manage all actions that can be used in a process</Label>
+            </StackPanel>
+        </Grid>
+        <Border Grid.Row="1" Margin="15">
+            <TabControl Padding="0, 15, 0, 0" SelectionChanged="SelectingItemsControl_OnSelectionChanged">
+                <TabItem Header="Print">
+                    <partial:ActionsPrintView></partial:ActionsPrintView>
+                </TabItem>
+                <TabItem Header="Custom Properties">
+                    <TextBlock Text="123333" Foreground="Red"></TextBlock>
+                </TabItem>
+                <TabItem Header="File Info"></TabItem>
+                <TabItem Header="Save Model As"></TabItem>
+                <TabItem Header="Save Drawing As"></TabItem>
+                <TabItem Header="Import File"></TabItem>
+                <TabItem Header="Drawing Templates"></TabItem>
+                <TabItem Header="Macros"></TabItem>
+            </TabControl>
+        </Border>
+    </Grid>
+</UserControl>

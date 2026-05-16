@@ -1,0 +1,112 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:ClassModifier="internal">
+    <Design.PreviewWith>
+        <Border Padding="0" Background="{DynamicResource PrimaryBackgroundColor}" Width="200">
+            <ListBox>
+                <ListBoxItem IsEnabled="False">Disabled</ListBoxItem>
+                <ListBoxItem IsEnabled="True" IsSelected="True">
+                    <ListBoxItem.Content>
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label 
+                                VerticalAlignment="Center"
+                                Content="测试"></Label>
+                            <Button Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Classes="small"
+                                    IsVisible="{Binding $parent[ListBoxItem].IsSelected}">
+                                <Label Classes="icon icon-only" Content="&#xe4a6;" FontSize="11"></Label>
+                            </Button>
+                        </Grid>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+                <ListBoxItem IsEnabled="True" IsSelected="True">
+                    <ListBoxItem.Content>
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label 
+                                VerticalAlignment="Center"
+                                Content="测试"></Label>
+                            <Button Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Classes="small"
+                                    IsVisible="{Binding $parent[ListBoxItem].IsSelected}">
+                                <Label Classes="icon icon-only" Content="&#xe4a6;" FontSize="11"></Label>
+                            </Button>
+                        </Grid>
+                    </ListBoxItem.Content>
+                </ListBoxItem>
+                <ListBoxItem>Test</ListBoxItem>
+                <ListBoxItem>Test</ListBoxItem>
+                <ListBoxItem>Test</ListBoxItem>
+            </ListBox>
+        </Border>
+    </Design.PreviewWith>
+    <Thickness x:Key="ListBoxItemPadding">12,9,12,12</Thickness>
+    <ControlTheme x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="{DynamicResource ListBoxItemPadding}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter Name="PART_ContentPresenter"
+                                  Background="{DynamicResource PrimaryBackgroundColor}"
+                                  Foreground="{DynamicResource PrimaryForegroundColor}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                  CornerRadius="{TemplateBinding CornerRadius}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  Content="{TemplateBinding Content}"
+                                  Padding="5"
+                                  FontSize="12"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+            </ControlTemplate>
+        </Setter>
+        
+        <Style Selector="^">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        </Style>
+        
+        
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource RegionBrush}" />
+        </Style>
+
+        <!--  PointerOver State  -->
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+        </Style>
+
+        <!--  Pressed State  -->
+        <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListMediumBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+        </Style>
+
+        <!--  Selected State  -->
+        <Style Selector="^:selected">
+
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
+
+            <!--  Selected Unfocused State  -->
+            <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
+
+            <!--  Selected PointerOver State  -->
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentMediumBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
+
+            <!--  Selected Pressed State  -->
+            <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentHighBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

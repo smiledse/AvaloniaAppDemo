@@ -1,0 +1,72 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="{DynamicResource PrimaryBackgroundColor}">
+            <!-- Add Controls for Previewer Here -->
+            <StackPanel Spacing="10">
+                <Label>Normal Label</Label>
+                <Label Classes="icon">&#xe03a;</Label>
+                <Label Classes="icon-only">&#xe03a;</Label>
+                <Label Classes="h1">Header 1</Label>
+                <Label Classes="h2">Header 2</Label>
+                <Label Classes="sub1">Sub header 1</Label>
+                <Label Classes="sub2">Sub header 233</Label>
+                <Label Classes="sub1 success">Sub header 1 Success</Label>
+                <Label Classes="h1 success">Header 1 Success</Label>
+                <Label Classes="icon-only">&#xE3E8;</Label>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
+    <Style Selector="Label.h1">
+        <Setter Property="FontSize" Value="34" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    
+    <Style Selector="Label.h2">
+        <Setter Property="Padding" Value="0 0 8 0" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Margin" Value="0, 6"></Setter>
+    </Style>
+
+    <Style Selector="Label.sub1">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0 -5 0 0" />
+        <Setter Property="Foreground" Value="{DynamicResource WarningGradient}" />
+    </Style>
+
+    <Style Selector="Label.sub2">
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0 -5 0 0" />
+    </Style>
+
+    <Style Selector="Label.success">
+        <Setter Property="Foreground" Value="{DynamicResource SuccessGradient}" />
+    </Style>
+
+    <Style Selector="Label.icon, Label.icon-only">
+        <Setter Property="FontFamily" Value="{DynamicResource Phosphor}" />
+        <Setter Property="FontSize" Value="19" />
+        <Setter Property="Padding" Value="0 2.5 -0.4 3" />
+        <Setter Property="Margin" Value="0 0 5 0" />
+    </Style>
+
+    <Style Selector="Label.icon-only">
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    
+    <Style Selector="Border.SideMenuBorder">
+        <Setter Property="Padding" Value="10, 20, 10, 20"></Setter>
+    </Style>
+    <Style Selector="Label.icon">
+        <Setter Property="FontFamily" Value="{DynamicResource Phosphor}"></Setter>
+    </Style>
+    
+    <Style Selector="TextBlock.info">
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="Foreground" Value="#6D707D"></Setter>
+    </Style>
+</Styles>

@@ -1,0 +1,53 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mv="clr-namespace:AvaloniaAppDemo.Views.Pages"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="mv:HomeViewModel"
+             x:Class="AvaloniaAppDemo.Views.Pages.HomePage">
+    <Design.DataContext>
+        <mv:HomeViewModel></mv:HomeViewModel>
+    </Design.DataContext>
+    
+    <StackPanel Spacing="16" Margin="24">
+        <TextBlock Text="实时系统监控"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Foreground="#2E7032"></TextBlock>
+        <!-- CPU 使用率显示 -->
+        <Border Background="#F5F5F5"
+                CornerRadius="8"
+                Padding="16">
+            <StackPanel Spacing="12">
+                <ProgressBar Value="{Binding Cpu}"
+                             Minimum="0"
+                             Maximum="100"
+                             Height="24"
+                             Background="#E0E0E0"
+                             Foreground="#197602"></ProgressBar>
+                
+                <!-- CPU 显示率文本 -->
+                <TextBlock HorizontalAlignment="Center" FontSize="16">
+                    <Run Text="CPU 使用率：" FontWeight="Medium"></Run>
+                    <Run Text="{Binding Cpu, StringFormat={}{0:F1}%}" FontWeight="Bold" Foreground="#1976D2"></Run>
+                </TextBlock>
+                
+                <TextBox></TextBox>
+                
+                <TextBlock Text="DDDD"
+                           FontWeight="SemiBold"
+                           FontSize="14"
+                           HorizontalAlignment="Center"
+                           Padding="8,4"
+                           Foreground="DarkGoldenrod"></TextBlock>
+            </StackPanel>
+        </Border>
+        <!-- 实时更新提示 -->
+        <TextBlock Text="🔄 数据每500ms自动更新"
+                   FontSize="12"
+                   HorizontalAlignment="Center"
+                   Foreground="Gray"/>
+    </StackPanel>
+</UserControl>

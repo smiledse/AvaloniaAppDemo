@@ -1,0 +1,41 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="{DynamicResource PrimaryBackgroundColor}">
+            <StackPanel Spacing="10">
+                <ComboBox></ComboBox>
+                <ComboBox PlaceholderText="下拉选择对应选项"></ComboBox>
+                <ComboBox SelectedIndex="0">
+                    <ComboBoxItem>选项 A</ComboBoxItem>
+                    <ComboBoxItem>选项 B</ComboBoxItem>
+                </ComboBox>
+                <ComboBox SelectedIndex="0" Width="200">
+                    <ComboBoxItem>选项 A</ComboBoxItem>
+                    <ComboBoxItem>选项 B</ComboBoxItem>
+                </ComboBox>
+                <ComboBox SelectedIndex="0" IsEnabled="False">
+                    <ComboBoxItem>选项 A</ComboBoxItem>
+                    <ComboBoxItem>选项 B</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </Border> 
+    </Design.PreviewWith>
+    
+    <Style Selector="ComboBox">
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryGradient}"></Setter>
+        <Setter Property="BorderThickness" Value="2"></Setter>
+        <Setter Property="CornerRadius" Value="3"></Setter>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBackgroundColor}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColor}"></Setter>
+    </Style>
+    
+    <Style Selector="ComboBox /template/ TextBlock#PART_PlaceholderText">
+        <Setter Property="Foreground" Value="Red" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontStyle" Value="Italic" />
+        <Setter Property="FontWeight" Value="Light" />
+    </Style>
+    <Style Selector="ComboBox:pointerover">
+        <Setter Property="Background" Value="red"></Setter>
+    </Style>
+</Styles>
