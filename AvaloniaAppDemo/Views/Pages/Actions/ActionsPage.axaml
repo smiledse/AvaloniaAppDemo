@@ -15,7 +15,10 @@
             </StackPanel>
         </Grid>
         <Border Grid.Row="1" Margin="15">
-            <TabControl Padding="0, 15, 0, 0" SelectionChanged="SelectingItemsControl_OnSelectionChanged">
+            <TabControl 
+                x:Name="ActionsTabControl"
+                Padding="0, 15, 0, 0" 
+                SelectionChanged="SelectingItemsControl_OnSelectionChanged">
                 <TabItem Header="Print">
                     <partial:ActionsPrintView></partial:ActionsPrintView>
                 </TabItem>
