@@ -15,7 +15,7 @@
     </Design.PreviewWith>
 
     <Style Selector="ListBox">
-        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryGradient}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseBorderColor}"></Setter>
         <Setter Property="BorderThickness" Value="2"></Setter>
         <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="CornerRadius" Value="3"></Setter>
@@ -23,6 +23,14 @@
     </Style>
     
     <Style Selector="ListBox:pointerover">
-        <Setter Property="BorderBrush" Value="{DynamicResource SuccessGradient}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryGradient}"></Setter>
+    </Style>
+    
+    <Style Selector="ListBox">
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="BorderBrush" Duration="0:0:0.2"></BrushTransition>
+            </Transitions>
+        </Setter>
     </Style>
 </Styles>

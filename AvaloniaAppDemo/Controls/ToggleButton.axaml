@@ -1,0 +1,76 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:ClassModifier="internal">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="{DynamicResource PrimaryBackgroundColor}">
+            <StackPanel Spacing="20">
+                <ToggleButton Content="Click Me!" />
+                <ToggleButton Content="" />
+                <ToggleButton Content="Disabled" IsEnabled="False" />
+                <ToggleButton Content="Three state" IsThreeState="True" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type ToggleButton}" TargetType="ToggleButton">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="RenderTransform" Value="none" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:.075" />
+            </Transitions>
+        </Setter>
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ColumnDefinitions="Auto, 10, *">
+                    <Border x:Name="PART_ToggleButton"
+                            Padding="3"
+                            Margin="5"
+                            BorderThickness="2"
+                            BorderBrush="{DynamicResource BrandColor}"
+                            CornerRadius="6">
+                        <Border.Transitions>
+                            <Transitions>
+                                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.075" />
+                                <BrushTransition Property="BorderBrush" Duration="0:0:0.075" />
+                                <BrushTransition Property="Background" Duration="0:0:0.075" />
+                            </Transitions>
+                        </Border.Transitions>
+                        <Border Width="10" Height="10" Margin="0, 0, 20, 0" Background="{DynamicResource PrimaryForegroundColor}" CornerRadius="7">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <ThicknessTransition Property="Margin" Duration="0:0:0.075" />
+                                </Transitions>
+                            </Border.Transitions>
+                        </Border>
+                    </Border>
+                    
+                    <TextBlock Grid.Column="2" FontWeight="Normal" FontSize="12" Margin="-5, 0, 0, 0"
+                               VerticalAlignment="Center"
+                               Background="Transparent"
+                               Text="{TemplateBinding Content}"
+                               TextWrapping="Wrap"></TextBlock>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pressed /template/ Border#PART_ToggleButton">
+            <Setter Property="RenderTransform" Value="scale(0.97)" />
+        </Style>
+        
+        <Style Selector="^:pointerover /template/ Border#PART_ToggleButton">
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryGradient}"></Setter>
+        </Style>
+        
+
+        <Style Selector="^:checked /template/ Border#PART_ToggleButton">
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryGradient}"></Setter>
+            
+            <Style Selector="^ Border">
+                <Setter Property="Margin" Value="20 0 0 0"></Setter>
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

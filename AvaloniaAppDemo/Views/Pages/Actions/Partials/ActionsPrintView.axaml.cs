@@ -10,4 +10,13 @@ public partial class ActionsPrintView : UserControl
     {
         InitializeComponent();
     }
+
+    private void SelectingItemsControl_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        var context = DataContext as ActionsViewModel;
+        if(context is null) return;
+
+        var selectedItem = (e.AddedItems[0] as ActionPrintViewModel)!;
+        context.SelectedPrint = selectedItem;
+    }
 }

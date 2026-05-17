@@ -72,8 +72,8 @@
 
         <!--  PointerOver State  -->
         <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+            <Setter Property="Background" Value="{DynamicResource HoverBackgroundColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColor}" />
         </Style>
 
         <!--  Pressed State  -->

@@ -18,11 +18,23 @@
     <Grid Background="{DynamicResource PrimaryForegroundColor}"
           ColumnDefinitions="Auto, *">
         <Border Padding="4"
+                BoxShadow="2 2 15 2 red"
                 Background="{DynamicResource NormalGradient}">
+           
             <Grid RowDefinitions="*, Auto">
                 <StackPanel Spacing="10" Width="{Binding SideMenuWidth}">
-                    <Image Source="{SvgImage /Assets/Images/logo.svg}" IsVisible="{Binding ExpendSideMenu}"></Image>
-                    <Image Margin="3" Source="{SvgImage /Assets/Images/icon.svg}" Width="22" IsVisible="{Binding !ExpendSideMenu}"></Image>
+                    <StackPanel.Styles>
+                        <Style Selector="StackPanel">
+                            <Setter Property="Transitions">
+                                <Transitions>
+                                    <DoubleTransition Property="Width" Duration="0:0:0.1"></DoubleTransition>
+                                </Transitions>
+                            </Setter>
+                        </Style>
+                    </StackPanel.Styles>
+                    <Image Margin="10, 15" Source="{SvgImage /Assets/Images/logo.svg}" IsVisible="{Binding ExpendSideMenu}"></Image>
+                    <Image Margin="3, 20" Source="{SvgImage /Assets/Images/icon.svg}" Width="22" IsVisible="{Binding !ExpendSideMenu}"></Image>
+                    
                     <IconButton HorizontalAlignment="Stretch"
                                 Icon="&#xe2c2;"
                                 Classes.isActive="{Binding HomePageIsActive}"
@@ -42,9 +54,6 @@
                 <StackPanel Grid.Row="1" Spacing="12">
                     <Button Click="Button_OnClick">
                         <Label Classes="icon" Content="{Binding SideMenuIcon}"></Label>
-                    </Button>
-                    <Button Click="Button_OnClick">
-                        <Label Classes="icon" Content="&#xea1c;"></Label>
                     </Button>
                     <Button
                         Classes.isActive="{Binding SettingPageIsActive}"

@@ -22,12 +22,12 @@ public partial class MainWindowViewModel : BaseViewModel
     [ObservableProperty] 
     [NotifyPropertyChangedFor(nameof(SideMenuWidth))]
     [NotifyPropertyChangedFor(nameof(SideMenuIcon))]
-    private bool _expendSideMenu = false;
+    private bool _expendSideMenu = true;
     
     private readonly PageFactory _pageFactory;
 
     public double SideMenuWidth => ExpendSideMenu == true ? 200 : 40;
-    public string SideMenuIcon => ExpendSideMenu ? "\\uea1c" : "\\uea2c";
+    public string SideMenuIcon => ExpendSideMenu ? "\uea1c" : "\uea2c";
 
     public bool HomePageIsActive => CurrentPage.PageName == "Home";
     public bool ActionsPageIsActive => CurrentPage.PageName == "Actions";

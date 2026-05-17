@@ -9,25 +9,30 @@
              Foreground="{DynamicResource PrimaryForegroundColor}"
              x:DataType="local:ActionsViewModel"
              x:Class="AvaloniaAppDemo.Views.Pages.Actions.Partials.ActionsPrintView">
-    
+
     <Design.DataContext>
         <local:ActionsViewModel></local:ActionsViewModel>
     </Design.DataContext>
-    <Grid ColumnDefinitions="200, 20, *,20, *">
+    <Grid ColumnDefinitions="200, 20, *, 20, *">
         <Grid Grid.Column="0" RowDefinitions="Auto, *">
-            <StackPanel  Margin="0, 0, 0, 10">
+            <StackPanel Margin="0, 0, 0, 10">
                 <Label Classes="h2">Print Actions</Label>
                 <TextBlock Classes="info" TextWrapping="Wrap">
                     Print actions can be used to  specific settings.
                 </TextBlock>
             </StackPanel>
-            <ListBox Grid.Row="1" ItemsSource="{Binding PrintList}">
+            <ListBox Grid.Row="1" 
+                     SelectionChanged="SelectingItemsControl_OnSelectionChanged"
+                     SelectedValueBinding="{Binding Id}"
+                     SelectedValue="{Binding SelectedPrint.Id}"
+                     ItemsSource="{Binding PrintList}">
                 <ListBox.ItemTemplate>
                     <DataTemplate x:DataType="vm:ActionPrintViewModel">
                         <Grid ColumnDefinitions="*, Auto">
-                            <Label 
+                            <Label
                                 VerticalAlignment="Center"
-                                Content="{Binding JobName}"></Label>
+                                Content="{Binding JobName}">
+                            </Label>
                             <Button Grid.Column="1"
                                     VerticalAlignment="Center"
                                     Classes="small"
@@ -39,49 +44,57 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
-        <Grid Column="2">
-            <StackPanel Spacing="15">
-                <StackPanel>
-                    <Label Classes="h2">General Settings</Label>
-                    <TextBlock Classes="info">Set the name properties the print job.</TextBlock>
+        <Grid Grid.Column="2"
+              RowDefinitions="Auto, 0, Auto, 10, Auto, 10, Auto, 0, Auto, 10, Auto, 10, *">
+            <Label Classes="h2" Grid.Column="0" Grid.Row="0">General Settings</Label>
+            <TextBlock Classes="info" Grid.Column="0" Grid.Row="2">Set the name properties the print job.</TextBlock>
+
+            <Grid Grid.Row="4" ColumnDefinitions="120, 10, *" RowDefinitions="Auto, 15, Auto, 15, Auto">
+                <Label Grid.Row="0" Grid.Column="0" Content="Job Name" VerticalAlignment="Center"></Label>
+                <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding SelectedPrint.JobName}"></TextBox>
+                <Label Grid.Row="2" Grid.Column="0" Content="Description" VerticalAlignment="Top"></Label>
+                <TextBox Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Height="80" Text="{Binding SelectedPrint.Description}"></TextBox>
+                <Label Grid.Row="4" Grid.Column="0" Content="Print" VerticalAlignment="Top"></Label>
+                <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal">
+                    <CheckBox Content="Models" IsChecked="{Binding SelectedPrint.IsModels}"></CheckBox>
+                    <CheckBox Content="Drawings" IsChecked="{Binding SelectedPrint.IsDrawings}"></CheckBox>
                 </StackPanel>
-                <Grid ColumnDefinitions="80, 15, *">
-                    <Label>Job Name</Label>
-                    <TextBox Grid.Column="2"></TextBox>
-                </Grid>
-                <Grid ColumnDefinitions="80, 15, *">
-                    <Label>Job Name</Label>
-                    <TextBox Grid.Column="2" TextWrapping="Wrap" Height="90"></TextBox>
-                </Grid>
-                <Grid ColumnDefinitions="80, 15, *">
-                    <Label>Print</Label>
-                    <StackPanel Grid.Column="2" Orientation="Horizontal">
-                        <CheckBox>Models</CheckBox>
-                        <CheckBox>Drawings</CheckBox>
-                    </StackPanel>
-                </Grid>
-            </StackPanel>
+            </Grid>
+            <Label Classes="h2" Grid.Column="0" Grid.Row="6">Print Settings</Label>
+            <TextBlock Classes="info" Grid.Column="0" Grid.Row="8">Selects the profiles to use for paper sizes.</TextBlock>
+            <Button Classes="outline" 
+                    Grid.Column="0" Grid.Row="10"
+                    FontSize="9"
+                    Content="New Print Settings" 
+                    HorizontalAlignment="Stretch"
+                    Margin="0, 5, 0, 5"></Button>
+            <ListBox Grid.Column="0" Grid.Row="12"></ListBox>
         </Grid>
-        <Grid Column="4">
-            <StackPanel Spacing="15">
-                <StackPanel>
-                    <Label Classes="h2">Drawings</Label>
-                    <TextBlock Classes="info">Set the  properties that apply to drawings.</TextBlock>
-                </StackPanel>
-                <Grid ColumnDefinitions="100, 15, *">
-                    <Label>Print Range</Label>
-                    <TextBox Grid.Column="2"></TextBox>
-                </Grid>
-                <Grid ColumnDefinitions="100, 15, *">
-                    <StackPanel 
-                        Orientation="Horizontal" 
-                        Spacing="10" 
-                        Grid.ColumnSpan="2">
-                        <ToggleButton VerticalAlignment="Top"></ToggleButton>
-                        <Label VerticalAlignment="Top">Black List</Label>
-                    </StackPanel>
-                    <TextBox Grid.Column="2" TextWrapping="Wrap" Height="90"></TextBox>
-                </Grid>
+        
+        <Grid Grid.Column="4"
+              RowDefinitions="Auto, 0, Auto, 10, Auto, 10, Auto, *, Auto">
+            <Label Classes="h2" Grid.Column="0" Grid.Row="0">Drawings</Label>
+            <TextBlock Classes="info" Grid.Column="0" Grid.Row="2">Set the properties that apply only to drawings.</TextBlock>
+
+            <Grid Grid.Row="4" ColumnDefinitions="120, 10, *" RowDefinitions="Auto, 15, Auto, 15, Auto">
+                <Label Grid.Row="0" Grid.Column="0" Content="Print Range" VerticalAlignment="Center"></Label>
+                <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding SelectedPrint.PringPage}"></TextBox>
+                <ToggleButton Grid.Row="2" Grid.Column="0" Content="Black List" 
+                              VerticalAlignment="Top" 
+                              IsChecked="{Binding SelectedPrint.DrawingExclusionIsWhiteList}"></ToggleButton>
+                <TextBox Grid.Row="2" Grid.Column="2" 
+                         TextWrapping="Wrap" Height="80" 
+                         Text="{Binding SelectedPrint.DrawingExclusionList}"></TextBox>
+            </Grid>
+            
+            <StackPanel Grid.Row="8" Orientation="Horizontal" 
+                        IsVisible="{Binding SelectedPrint.HasChanged}"
+                        Spacing="10"
+                        HorizontalAlignment="Right">
+                <Button Classes="subtle" Content="Cancel" 
+                        VerticalAlignment="Bottom"></Button>
+                <Button Classes="success" Content="Save" 
+                        VerticalAlignment="Bottom"></Button>
             </StackPanel>
         </Grid>
     </Grid>

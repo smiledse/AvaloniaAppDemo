@@ -5,9 +5,10 @@
             <StackPanel Spacing="20">
                 <Button>你好</Button>
                 <IconButton Icon="&#xE512;" Width="200" Content="测试"></IconButton>
-                <IconButton Classes="isActive" Icon="&#xE512;" Width="200" Content="测试"></IconButton>
+                <IconButton Classes="isActive" Icon="&#xE512;" Width="200" Content="isActive"></IconButton>
                 <IconButton Classes="outline" Icon="&#xE512;" Width="200" Content="测试"></IconButton>
                 <IconButton Classes="subtle" Icon="&#xE512;" Width="200" Content="测试"></IconButton>
+                <IconButton Classes="success" Icon="&#xE512;" Width="200" Content="success"></IconButton>
                 <IconButton Height="50" Classes="subtle" Icon="&#xE512;"  Content="测试"></IconButton>
                 <IconButton Height="50" Classes="primary" Icon="&#xE512;"  Content="测试"></IconButton>
                 <Button>
@@ -61,6 +62,10 @@
         <Setter Property="Foreground" Value="{DynamicResource PrimaryBackgroundColor}"></Setter>
         <Setter Property="Background" Value="{DynamicResource WarningGradient}"></Setter>
     </Style>
+    <Style Selector=":is(Button).success">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBackgroundColor}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource SuccessGradient}"></Setter>
+    </Style>
     
     <Style Selector=":is(Button) /template/ ContentPresenter">
         <Setter Property="Transitions">
@@ -79,6 +84,11 @@
     <Style Selector=":is(Button).primary:pointerover /template/ ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForegroundColor}"></Setter>
         <Setter Property="Background" Value="{DynamicResource HoverDangerBackgroundColor}"></Setter>
+    </Style>
+    <Style Selector=":is(Button).success:pointerover /template/ ContentPresenter">
+        <Setter Property="BorderBrush" Value="#55CB18"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBackgroundColor}"></Setter>
+        <Setter Property="Background" Value="#55CB18"></Setter>
     </Style>
     <Style Selector=":is(Button).outline:pointerover /template/ ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryBackgroundColor}"></Setter>

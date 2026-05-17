@@ -25,12 +25,13 @@
                 <ResourceInclude Source="Controls/TabControl.axaml" />
                 <ResourceInclude Source="Controls/TabItem.axaml" />
                 <ResourceInclude Source="Controls/ListBoxItem.axaml" />
+                <ResourceInclude Source="Controls/ToggleButton.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
         <FontFamily x:Key="Phosphor">Assets/Fonts/Phosphor.ttf#Phosphor</FontFamily>
 
-        <Color x:Key="PrimaryBackgroundColor">#151E3C</Color>
+        <Color x:Key="PrimaryBackgroundColor">#14172D</Color>
         <Color x:Key="PrimaryBackgroundColor1">#111214</Color>
         <Color x:Key="PrimaryBackgroundColor2">#151E3E</Color>
         <Color x:Key="PrimaryForegroundColor">#D3D3D3</Color>
@@ -60,13 +61,15 @@
         <Color x:Key="CardBackgroundColor">#181b2e</Color>
         <Color x:Key="CardBorderColor">#232640</Color>
         <Color x:Key="CardBorderSubtleColor">#2e3252</Color>
-        <Color x:Key="HoverBackgroundColor">#1e2238</Color>
+        
+        <Color x:Key="HoverBackgroundColor">#481FA3</Color>
+        
         <Color x:Key="TableHeaderBackgroundColor">#131625</Color>
         <Color x:Key="DialogOverlayColor">#000000</Color>
         
         <LinearGradientBrush x:Key="NormalGradient" StartPoint="0%,0%" EndPoint="100%, 0%">
             <GradientStop Offset="0" Color="#151E3C"></GradientStop>
-            <GradientStop Offset="1" Color="#9292A2"></GradientStop>
+            <GradientStop Offset="1" Color="#151E3E"></GradientStop>
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="PrimaryGradient" StartPoint="0%,0%" EndPoint="100%, 0%">
             <GradientStop Offset="0" Color="#00ffff"></GradientStop>
