@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using AvaloniaAppDemo.ViewModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -31,13 +29,4 @@ public partial class ActionPrintViewModel : BaseViewModel
     [ObservableProperty] private bool _hasChanged;
 
     [ObservableProperty] [JsonIgnore] private bool _isNewItem;
-
-    protected override void OnPropertyChanging(PropertyChangingEventArgs e)
-    {
-        base.OnPropertyChanging(e);
-        if (e.PropertyName != nameof(HasChanged))
-        {
-            HasChanged = true;
-        }
-    }
 }
